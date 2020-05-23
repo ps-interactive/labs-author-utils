@@ -1,0 +1,11 @@
+resource "aws_s3_bucket" "s3-test" {
+    bucket                      = "sensitive-globo-bucket-${random_string.version.result}"
+    region                      = var.region
+    request_payer               = "BucketOwner"
+    tags                        = {}
+
+    versioning {
+        enabled    = false
+        mfa_delete = false
+    }
+}
